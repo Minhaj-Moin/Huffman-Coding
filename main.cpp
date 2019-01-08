@@ -1,28 +1,22 @@
 #include <stdio.h>
 #include <iostream>
 
-struct Node
-{
-	int frequency = 0;
-};
 
-struct LeafNode: public Node
+struct HuffNode
 {
-	LeafNode(char _character, int _frequency){
+	HuffNode(char _character, int _frequency){
 		this->frequency = _frequency;
 		this->character = _character;
 	}
-	char character;
-};
-
-struct HuffNode: public Node
-{
-	HuffNode(int _frequency)
+	HuffNode()
 	{
-		this->frequency = _frequency;
+		this->frequency = 0;
+		this->character = '\0';
 	}
-	Node* right;
-	Node* left;
+	int frequency;
+	char character;
+	HuffNode* right;
+	HuffNode* left;
 };
 
 class HuffTree
@@ -30,10 +24,10 @@ class HuffTree
 public:
 	HuffTree()
 	{
-		root = new LeafNode();
+		root = new HuffNode();
 	}
 	~HuffTree();
-	LeafNode* root;
+	HuffNode* root;
 	void addNode()
 	{
 		// This requires getting the sum and merging of subtrees. Work has to be don here.
@@ -51,8 +45,7 @@ void runHuffman(std::string inputstr, char* arr1, int* arr2)
 		arr2[i]++;
 	}
 	sort(arr1,arr2);
-	HuffNode
-	if (arr2[len-1] + arr2)
+	
 
 }
 
