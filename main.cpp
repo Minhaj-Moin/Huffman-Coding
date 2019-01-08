@@ -1,32 +1,39 @@
 #include <stdio.h>
 #include <iostream>
 
-
-struct HuffNode
+struct Node
 {
-	HuffNode(char _character, int _frequency){
+	int frequency = 0;
+};
+
+struct LeafNode: public Node
+{
+	LeafNode(char _character, int _frequency){
 		this->frequency = _frequency;
 		this->character = _character;
 	}
-	HuffNode()
-	{
-		this->frequency = 0;
-		this->character = '\0';
-	}
-	int frequency;
 	char character;
-	HuffNode right;
-	HuffNode left;
 };
+
+struct HuffNode: public Node
+{
+	HuffNode(int _frequency)
+	{
+		this->frequency = _frequency;
+	}
+	Node* right;
+	Node* left;
+};
+
 class HuffTree
 {
 public:
 	HuffTree()
 	{
-		root = new HuffNode();
+		root = new LeafNode();
 	}
 	~HuffTree();
-	HuffNode* root;
+	LeafNode* root;
 	void addNode()
 	{
 		// This requires getting the sum and merging of subtrees. Work has to be don here.
@@ -35,20 +42,17 @@ public:
 
 };
 
-void runHuffman(std::string inputstr)
+void runHuffman(std::string inputstr, char* arr1, int* arr2)
 {
-
-	std::cout << inputstr << std::endl;
-	int chars[128] = {0};
+	int len = inputstr.length();
 	for (int i = 0; i < inputstr.length() ; i++)
 	{
-		chars[(int)inputstr[i]]++;
+		arr1[i] = inputstr[i];
+		arr2[i]++;
 	}
-	for (int j = 0; j<128 ; j++)
-	{
-		std::cout << '(' << chars[j] << " , " << (char)j << " , " << j  << ')' << '\t';
-	}
-
+	sort(arr1,arr2);
+	HuffNode
+	if (arr2[len-1] + arr2)
 
 }
 
