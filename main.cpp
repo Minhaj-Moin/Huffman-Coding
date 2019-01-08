@@ -2,24 +2,38 @@
 #include <iostream>
 
 
-// class HuffNode
-// {
-// 	HuffNode();
-// 	int frequency;
-// 	char character;
-// 	HuffNode right;
-// 	HuffNode left;
-// };
-// class HuffTree
-// {
-// public:
-// 	HuffTree();
-// 	~HuffTree();
-// 	HuffNode root;
-// 	void addNode();
-// 	void removeNode();
+struct HuffNode
+{
+	HuffNode(char _character, int _frequency){
+		this->frequency = _frequency;
+		this->character = _character;
+	}
+	HuffNode()
+	{
+		this->frequency = 0;
+		this->character = '\0';
+	}
+	int frequency;
+	char character;
+	HuffNode right;
+	HuffNode left;
+};
+class HuffTree
+{
+public:
+	HuffTree()
+	{
+		root = new HuffNode();
+	}
+	~HuffTree();
+	HuffNode* root;
+	void addNode()
+	{
+		// This requires getting the sum and merging of subtrees. Work has to be don here.
+	}
+	void removeNode();
 
-// };
+};
 
 void runHuffman(std::string inputstr)
 {
@@ -32,8 +46,10 @@ void runHuffman(std::string inputstr)
 	}
 	for (int j = 0; j<128 ; j++)
 	{
-		std::cout << chars[j] << " , " << (char)j << " , " << j << std::endl;
+		std::cout << '(' << chars[j] << " , " << (char)j << " , " << j  << ')' << '\t';
 	}
+
+
 }
 
 int main()
